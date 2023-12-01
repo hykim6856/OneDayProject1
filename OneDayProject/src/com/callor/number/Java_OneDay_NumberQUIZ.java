@@ -7,7 +7,6 @@ import com.callor.service.MiniGame;
 
 public class Java_OneDay_NumberQUIZ {
 
-
 	public static void game() {
 		int RANGE = 50;
 		int life = 5;
@@ -22,10 +21,11 @@ public class Java_OneDay_NumberQUIZ {
 		// ------------
 		Line.sLine(50);
 		System.out.printf("<<%d번 안에 1 부터 %d까지의 수중 황금열쇠를 맞춰보세요>>\n", life, RANGE);
-		Line.sLine(50);
+		
 
 		// ======================================================
 		while (true) {
+			Line.sLine(50);
 			System.out.print("황금열쇠(QUIT 종료) >> ");
 			String str = scan.nextLine();
 			// ======================================================
@@ -41,7 +41,6 @@ public class Java_OneDay_NumberQUIZ {
 				System.out.printf("<!!오류!!>\n (%s)를 입력하셨습니다. ", str);
 				System.out.println("정수를 정확히 입력해주세요! ");
 				System.out.println();
-				Line.sLine(50);
 				continue;
 			}
 //--
@@ -49,7 +48,7 @@ public class Java_OneDay_NumberQUIZ {
 				System.out.println();
 				System.out.printf("<!!오류!!>\n %d 은 범위 안의 수가 아닙니다. 1부터 %d 까지의 정수를 입력해주세요! \n", num, RANGE);
 				System.out.println();
-				Line.sLine(50);
+
 				continue;
 			}
 			if (life - tryN == 1 && num != answer) {
@@ -80,11 +79,12 @@ public class Java_OneDay_NumberQUIZ {
 			System.out.println("다시 시도해보세요 :(");
 			System.out.println();
 			Line.sLine(50);
-			if(MiniGame.Apple()) {
+
+			if (MiniGame.Apple()) {
 				Line.bLine(25);
-				System.out.println("축하드립니다. 행운의 황금사과를 발견하셨습니다.\n 먹으니 기력이 솟아 횟수를 모두 회복합니다.");
+				System.out.println("축하드립니다. 행운의 황금사과를 발견하셨습니다.\n 먹으니 기력이 솟아 남은 횟수가 1 늘어납니다.");
 				Line.bLine(25);
-				tryN=0;
+				life += 1;
 			}
 
 			continue;
@@ -95,20 +95,20 @@ public class Java_OneDay_NumberQUIZ {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		while(true) {
-		Line.dLine(50);
-		System.out.println("뤼팡의 황금열쇠를 찾아라");
-		Line.dLine(50);
-		game();
-		System.out.println("재시작하시겠습니까?");
-		System.out.print("(네/아니오) >> ");
-		String regame = scan.nextLine();
-		if (regame.equals("네")) {
-			continue;
-		
+		while (true) {
+			Line.dLine(50);
+			System.out.println("뤼팡의 황금열쇠를 찾아라");
+			Line.dLine(50);
+			game();
+			System.out.println("재시작하시겠습니까?");
+			System.out.print("(네/아니오) >> ");
+			String regame = scan.nextLine();
+			if (regame.equals("네")) {
+				continue;
+
+			}
+			break;
 		}
-		break;
-	}
 		System.out.println("종료");
-}
+	}
 }
